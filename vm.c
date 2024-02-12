@@ -18,6 +18,7 @@ static void resetStack() {
 void initVM() {
 	resetStack();
 	vm.objects = NULL;
+  initTable(&vm.strings);
 }
 
 static void runtimeError(const char* format, ...) {
@@ -35,6 +36,7 @@ static void runtimeError(const char* format, ...) {
 
 void freeVM() {
 	freeObjects();
+  freeTable(&vm.strings);
 }
 
 void push(Value value) {
