@@ -141,9 +141,13 @@ static InterpretResult run() {
       case OP_SUBTRACT: BINARY_OP(NUMBER_VAL, -); break;
       case OP_MULTIPLY: BINARY_OP(NUMBER_VAL, *); break;
       case OP_DIVIDE:   BINARY_OP(NUMBER_VAL, /); break;
+      case OP_PRINT: {
+        printValue(pop());
+        printf("\n");
+        break;
+      }
+      case OP_POP: pop(); break;
       case OP_RETURN: {
-				printValue(pop());
-				printf("\n");
         return INTERPRET_OK;
       }
     }
